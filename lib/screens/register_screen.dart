@@ -13,7 +13,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _lastNameController = TextEditingController();
 
   Future<void> _register() async {
-    final String apiUrl = 'http://192.168.128.59:3000/register';
+    final String apiUrl = 'http://localhost:3000/register';
     try{
       final response=await http.post(
         Uri.parse(apiUrl),
@@ -38,7 +38,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
         Navigator.of(context).pushReplacementNamed('/');
       }else{
         final errorMessage = jsonDecode(response.body)['message'];
-        print('Registration failed: $errorMessage');
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Registration failed: $errorMessage')),
         );

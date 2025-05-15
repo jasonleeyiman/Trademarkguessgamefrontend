@@ -331,7 +331,7 @@ class _QuestionBankPageState extends State<QuestionBankPage>{
         unitName: _unitNameController.text,
       );
       final unitJson = jsonEncode(newUnit.toJson());
-      final apiUrl = Uri.parse('http://192.168.128.59:3000/api/users/release/question');
+      final apiUrl = Uri.parse('http://localhost:3000/api/users/release/question');
       final prefs = await SharedPreferences.getInstance();
       final token = prefs.getString('authToken');
       try{
@@ -398,7 +398,7 @@ class _GameRulesPageState extends State<GameRulesPage>{
     _loadGameRules();
   }
   Future<void> _loadGameRules() async{
-    final apiUri=Uri.parse('http://192.168.128.59:3000/api/users/fetch/rules');
+    final apiUri=Uri.parse('http://localhost:3000/api/users/fetch/rules');
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString('authToken');
     try{
@@ -443,7 +443,7 @@ class _GameRulesPageState extends State<GameRulesPage>{
       int? correctRate = correctRateStr.isNotEmpty ?int.tryParse(correctRateStr) : null;
       if(isFirstSet){
         final response=await http.post(
-          Uri.parse('http://192.168.128.59:3000/api/users/set/rules'),
+          Uri.parse('http://localhost:3000/api/users/set/rules'),
           headers:{
             'Content-Type': 'application/json',
             'Authorization': '$token',
@@ -469,7 +469,7 @@ class _GameRulesPageState extends State<GameRulesPage>{
         }
       }else{
         final response=await http.put(
-          Uri.parse('http://192.168.128.59:3000/api/users/modify/rules/${ruleId}'),
+          Uri.parse('http://localhost:3000/api/users/modify/rules/${ruleId}'),
           headers:{
             'Content-Type': 'application/json',
             'Authorization': '$token',
@@ -555,7 +555,7 @@ class _PlayersDataPageState extends State<PlayersDataPage>{
     fetchPlayers();
   }
   Future<void> fetchPlayers() async{
-    final apiUri=Uri.parse('http://192.168.128.59:3000/api/users/player/information');
+    final apiUri=Uri.parse('http://localhost:3000/api/users/player/information');
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString('authToken');
     try{

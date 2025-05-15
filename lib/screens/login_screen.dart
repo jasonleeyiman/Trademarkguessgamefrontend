@@ -13,7 +13,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final _passwordController = TextEditingController();
 
   Future<void> _login() async {
-    final String apiUrl='http://192.168.128.59:3000/api/login';
+    final String apiUrl='http://localhost:3000/api/login';
     try{
       final response = await http.post(
         Uri.parse(apiUrl),
